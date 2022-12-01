@@ -3,6 +3,7 @@ import HomeView from '../views/LinkView.vue'
 import LoginView from '../views/LoginView.vue'
 import ReportView from '../views/ReportView.vue'
 import LinkTambah from '../views/LinkTambahView.vue'
+import LinkEdit from '../views/LinkEditView.vue'
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     name: 'linkTambah',
     component: LinkTambah
   },
+  {
+    path: '/linkEdit/:id_link',
+    name : 'linkEdit',
+    component : LinkEdit,
+  }
 ]
 
 const router = createRouter({

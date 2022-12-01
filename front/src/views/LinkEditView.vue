@@ -1,96 +1,94 @@
 <template>
     <Sidebar/>
     <div class="main-content" style="overflow-y:auto">
-<section class="section">
-    <div class="section-header">
-        <h1>Tambah Link</h1>
-    </div>
-    <div class="section-body">
-        <div class="bg-white mx-auto rounded shadow-sm col-md-12 p-4">
-            <form action="">
-                <span>Keyword</span>
-                <input id="input_keyword" type="text" class="col-md-12 form-control">
-                
-                <div class="row mt-2">
-                    <div class="col-md-6">
-                        <span>Kategori</span>
-                        <input type="hidden" id="input_id_kategori">
-                        <select name="" class="form-control" id="" onchange="pilih_kategori(this.value)">
-                            <option value="">Pilih Kategori</option>
-                            
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <span>Grup</span>
-                        <input id="input_grup" type="text" class="form-control">
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-11">
-                        <span>Link</span>
-                    </div>
-                    <div class="col-md-1">
-                        <button type="button" onclick="tambah_link()" class="btn-warning btn"><span><i class="fas fa-plus"></i></span></button>
-                    </div>
-                </div>
-                <br>
-                
-                <div id="parent_row_tambah">
-                    <div class="row mt-2" id="ele-link-0">
-                        <div class="col-md-11">
-                            <input data-index_link="0" oninput="cek_jenis_link_ecom(this)" type="text" value="" data-ecom="" class="inputan-link form-control">
-                        </div>
-                        <div class="col-md-1">
-                            <button onclick="hapus_link(this)" class="btn-danger btn" data-index_ele="0"><span><i class="fas fa-trash"></i></span></button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            
-            <div class="d-flex justify-content-between mt-2 p-2">
-                <router-link class="btn-warning btn col-md-5" to="/link">Kembali</router-link>
-                <button class="btn-primary btn col-md-5" id="btn-simpan" onclick="simpan_link()"><span style="font-size:16px">Simpan</span></button>
+        <section class="section">
+            <div class="section-header">
+                <h1>Tambah Link</h1>
             </div>
-        </div>
+            <div class="section-body">
+                <div class="bg-white mx-auto rounded shadow-sm col-md-12 p-4">
+                    <form ref="formEdit">
+                        <span>Nama Produk</span>
+                        <input v-model="id_link" id="id_link" type="hidden" class="col-md-12 form-control">
+                        <input v-model="nama_produk" id="nama_produk" type="text" class="col-md-12 form-control">
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <span>Link Produk</span>
+                                <input v-model="link" type="text" class="col-md-12 form-control" id="link_produk">
+                            </div>
+                            <div class="col-md-2">
+                                <span>Jenis Ecom</span>
+                                <select class="form-control" v-model="ecom"  name="" id="">
+                                    <option value="">PIlih Ecom</option>
+                                    <option value="shopee">Shopee</option>
+                                    <option value="tokopedia">Tokopedia</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>                    
+                    <div class="d-flex justify-content-between mt-2 p-2">
+                        <router-link class="btn-warning btn col-md-5" to="/link">Kembali</router-link>
+                        <button type="button" v-on:click="setDataUpdate()" class="btn-primary btn col-md-5" id="btn-simpan"><span style="font-size:16px">Simpan</span></button>
+                    
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </section>
     </div>
-</section>
-</div>
 
-<!-- modal -->
-<div class="modal fade" id="modal_update_link" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="modal_update_link" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-<div class="modal-content">
-  <div class="modal-header">
-    <h5 class="modal-title">Proses Update Link</h5>
-  </div>
-  <div class="modal-body">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th class="text-center bg-primary text-white">Link</th>
-                <th class="text-center bg-primary text-white">Data Produk</th>
-                <th class="text-center bg-primary text-white">Data Toko</th>
-                <th class="text-center bg-primary text-white">Status</th>
-            </tr>
-        </thead>
-        <tbody id="parent-tr-link">
-        </tbody>
-    </table>
-    <span class="text-danger"><i>Akan otomatis menutup saat selesai</i></span>
-  </div>
-</div>
-</div>
-</div>
 </template>
-
 <script>
 import Sidebar from '@/components/Sidebar.vue'
+import axios from 'axios'
+
+const head_form = {headers: {'Content-Type': 'multipart/form-data'}}
 
 export default {
   name: 'LinkTambahView',
   components: {
     Sidebar
-  }
+  },
+  data() {
+    return {
+        link : "",
+        ecom : "",
+        nama_produk : "",
+        id_link : ""
+    }
+  },
+  created() {
+    this.getDataLink(),
+    axios.defaults.baseURL = 'http://localhost/research/back/clink'
+  },
+  methods: {
+    getDataLink : function(){
+        axios.get(`get_update?id=${this.$route.params.id_link}`)
+             .then(response => (
+                this.link =response.data.data[0]['link'],
+                this.ecom = response.data.data[0]['ecom'],
+                this.nama_produk = response.data.data[0]['nama_produk'],
+                this.id_link = response.data.data[0]['id']
+             ))
+             .catch(error => alert(error));
+    },
+    setDataUpdate : function(){
+        var arr_post = {
+            link :  this.link,
+            ecom :  this.ecom,
+            nama_produk :  this.nama_produk,
+            id : this.id_link
+            }
+
+        axios.post("set_update",arr_post,head_form)
+                    .then(response => (
+                        // alert('Berhasil ditambahkan')
+                        alert("Berhasil ditambahkan")
+                    ))
+                    .catch(error => alert(error));
+    }
+  },
 }
 </script>

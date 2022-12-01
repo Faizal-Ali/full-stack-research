@@ -19,7 +19,7 @@
       <aside id="sidebar-wrapper">
         <div class="sidebar-brand mt-4" style="line-height:0px">
           <h5 class="text-center">
-            <img style="width:170px" class="mx-auto" src="https://cdn.shopify.com/s/files/1/1764/2831/t/3/assets/logo.png?v=37021879728213879011522638925" alt="">
+            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" style="height: 24px;widows: 24px;" alt="" srcset=""> Hi {{data_login['nama']}}
           </h5>
           <hr>
           <a href="#">Inspect Marketplace</a>
@@ -43,6 +43,14 @@
 
 <script>
   export default {
-      name : 'sidebar'
+      name : 'sidebar',
+      data(){
+        return {
+          data_login : {
+            nama : localStorage.getItem('data-login_nama'),
+            file : localStorage.getItem('data-login_file'),
+          }
+        }
+      }
   }
 </script>
