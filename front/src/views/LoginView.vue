@@ -51,6 +51,7 @@ export default {
                     if(dlog['status'] == 'ok'){
                         localStorage.setItem('data-login_nama',dlog['data']['nama'])
                         localStorage.setItem('data-login_img',dlog['data']['img'])
+                        localStorage.setItem('data-login_id',dlog['data']['id'])
                         self.$router.push({name:'report'})
                     }else{
                         alert('username atau password salah');

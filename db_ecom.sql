@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Des 2022 pada 05.03
+-- Waktu pembuatan: 01 Des 2022 pada 07.49
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 5.6.40
 
@@ -126,7 +126,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `password`, `nama`, `img`) VALUES
-(1, 'admin', '202cb962ac59075b964b07152d234b70', 'faizal', '');
+(1, 'admin', '202cb962ac59075b964b07152d234b70', 'faizal', '{\"file_name\":\"screencapture-fasposodoo-fastprint-co-id-omset-ito-2022-11-29-13_35_11.png\",\"file_type\":\"image\\/png\",\"file_path\":\"B:\\/xampp\\/htdocs\\/research\\/back\\/assets\\/user_files\\/\",\"full_path\":\"B:\\/xampp\\/htdocs\\/research\\/back\\/assets\\/user_files\\/screencapture-fasposodoo-fastprint-co-id-omset-ito-2022-11-29-13_35_11.png\",\"raw_name\":\"screencapture-fasposodoo-fastprint-co-id-omset-ito-2022-11-29-13_35_11\",\"orig_name\":\"screencapture-fasposodoo-fastprint-co-id-omset-ito-2022-11-29-13_35_11.png\",\"client_name\":\"screencapture-fasposodoo-fastprint-co-id-omset-ito-2022-11-29-13_35_11.png\",\"file_ext\":\".png\",\"file_size\":120.09,\"is_image\":true,\"image_width\":1805,\"image_height\":657,\"image_type\":\"png\",\"image_size_str\":\"width=\\\"1805\\\" height=\\\"657\\\"\"}');
 
 --
 -- Indexes for dumped tables

@@ -34,6 +34,7 @@
           <!-- kompetitor -->
           <li class=""><router-link to="/report">Report</router-link></li>
           <li class=""><router-link to="/link">Link</router-link></li>
+          <li class=""><router-link to="/pengaturan">Pengaturan</router-link></li>
           <li class=""><router-link to="/">Logout</router-link></li>
     
         </ul>

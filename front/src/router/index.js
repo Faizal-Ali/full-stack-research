@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue'
 import ReportView from '../views/ReportView.vue'
 import LinkTambah from '../views/LinkTambahView.vue'
 import LinkEdit from '../views/LinkEditView.vue'
+import Pengaturan from '../views/PengaturanView.vue'
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/linkEdit/:id_link',
     name : 'linkEdit',
     component : LinkEdit,
+  },
+  {
+    path: '/pengaturan',
+    name : 'pengaturan',
+    component : Pengaturan,
   }
 ]
 
