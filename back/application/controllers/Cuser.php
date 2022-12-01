@@ -12,11 +12,6 @@ class Cuser extends CI_Controller {
 	}
 
 	public function pengaturan(){
-		// $arr_update = array(
-		// 	'username' =>  $_POST['username'],
-		// 	'password' => md5($_POST['password'])
-		// );
-
 		$config['upload_path']          = './assets/user_files';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg|pdf';
 		$config['overwrite'] = TRUE;
