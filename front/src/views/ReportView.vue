@@ -18,13 +18,12 @@
 
 <script>
 import Sidebar from '@/components/Sidebar.vue'
-// import GrafikReport from '@/components/GrafikReport.vue'
-
+import GrafikReport from '@/components/GrafikReport.vue'
 export default {
   name: 'HomeView',
   components: {
     Sidebar,
-    // GrafikReport
+    GrafikReport
   }
 }
 </script>
