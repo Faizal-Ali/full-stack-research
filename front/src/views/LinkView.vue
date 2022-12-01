@@ -6,7 +6,7 @@
         <div class="section-header">
             <h1 class="w-100">
                 Link
-                <a href="<?=base_url('kompetitor-up_link')?>" target="_blank" class="btn btn-warning float-right ml-2">Update</a>
+                <a href="http://localhost/research/back/up_link" target="_blank" class="btn btn-warning float-right ml-2">Update</a>
                 <router-link class="btn-success btn float-right" to="/linkTambah">Tambah</router-link>
             </h1>
         </div>
@@ -91,8 +91,8 @@ export default {
     }
   },
   created() {
-    this.getDlink(),
-    axios.defaults.baseURL = 'http://localhost/research/back/clink'
+    axios.defaults.baseURL = 'http://localhost/research/back/clink',
+    this.getDlink()
   },
   methods: {
     getDlink : function(){
